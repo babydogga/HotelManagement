@@ -1,0 +1,56 @@
+﻿<Window x:Class="HotelManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hotel Management" Height="500" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tabela z pokojami -->
+        <DataGrid x:Name="RoomsDataGrid" AutoGenerateColumns="False" Grid.Column="0" Grid.RowSpan="2" SelectionChanged="RoomsDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Room Name" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Tabela z klientami -->
+        <DataGrid x:Name="ClientsDataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Client Name" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Tabela z pracownikami -->
+        <DataGrid x:Name="EmployeesDataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Employee Name" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Zarządzanie pokojami -->
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox x:Name="RoomNameTextBox" Width="100" Margin="5"/>
+            <Button Content="Add Room" Click="AddRoomButton_Click" Margin="5"/>
+            <Button Content="Edit Room" Click="EditRoomButton_Click" Margin="5"/>
+            <Button Content="Delete Room" Click="DeleteRoomButton_Click" Margin="5"/>
+        </StackPanel>
+
+        <!-- Zarządzanie pracownikami -->
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox x:Name="EmployeeNameTextBox" Width="100" Margin="5"/>
+            <Button Content="Add Employee" Click="AddEmployeeButton_Click" Margin="5"/>
+            <Button Content="Edit Employee" Click="EditEmployeeButton_Click" Margin="5"/>
+            <Button Content="Delete Employee" Click="DeleteEmployeeButton_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
